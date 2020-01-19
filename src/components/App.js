@@ -49,7 +49,7 @@ const App = () => {
             <SetsCard color="darkblue" shape="square" number={[1]} fill="fill" />
             <SetsCard color="red" shape="oval" number={[1,2,3]} fill="empty" />
             <SetsCard color="black" shape="circle" number={[1,2,3]} fill="empty" />
-            <SetsCard color="darkblue" shape="square" number={[1,2]} fill="fill" />
+            <SetsCard color="darkblue" shape="oval" number={[1,2]} fill="fill" />
             <SetsCard color="black" shape="circle" number={[1,2,3]} fill="fill" />
             <SetsCard color="red" shape="oval" number={[1,2,3]} fill="fill" />
 

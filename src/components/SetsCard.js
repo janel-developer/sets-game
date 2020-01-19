@@ -17,6 +17,7 @@ const SetsCard = ({color, number, shape, fill}) => {
         flex-wrap: wrap;
         justify-content: center;
         align-content: center;
+        align-items: center;
         height: ${cardHeight}px;
         width: ${cardWidth}px;
     `
