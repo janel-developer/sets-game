@@ -5,9 +5,9 @@ const SetsCard = ({color, number, shape, fill}) => {
     // Get inner width of the window
     const innerWidth = window.innerWidth
     // Cards are 150px wide for md/large screen, and 75px wide for sm/xs screen
-    const cardWidth = innerWidth > 500 ? 150 : 75
+    const cardWidth = innerWidth > 500 ? 200 : 100
     // Cards are 300px high for md/large screen, and 150px high for sm/xs screen
-    const cardHeight = innerWidth > 500 ? 300 : 150
+    const cardHeight = innerWidth > 500 ? 150 : 80
     // Card shapes are 100px wide for md/large screen and 50px wide for sm/xs screen
     // If there are 2 shapes, divide width by 2 (below)
     // If there are 3 shapes, divide width by 3 (below)
