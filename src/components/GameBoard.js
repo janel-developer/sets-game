@@ -16,6 +16,7 @@ const GameBoard = () => {
     const Board= styled.div `
         display: flex;
         justify-content: center;
+        grid-area: GameBoard;
     `
 
     // Centers cards horizontally and vertically and
