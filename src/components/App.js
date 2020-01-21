@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import GameBoard from "./GameBoard"
+import GamePanel from "./GamePanel"
 
 const App = () => {
 
@@ -38,45 +39,6 @@ const App = () => {
         mask-repeat: no-repeat;
         mask-size: 100%;
     `
-    const Button = styled.button `
-        width: 25vw;
-        background: url("img/sacred-geo.svg");
-        background-size: 70%;
-        font-size: 1em;
-        border-radius: 3px;
-        color: darkblue;
-        font-family: 'Amarante', cursive;
-        border: 2px solid ${accentColor};
-        margin: 5px;
-        padding: 2px;
-        transition: 0.5s all ease-out;
-        &:hover {
-            background: url("img/sacred-geo.svg");
-            background-size: 40%;
-            background-color: ${accentColor};
-            color: black;
-            border: 2px solid darkblue;
-        }
-    `
-
-    const Score = styled.div `
-        width: 25vw;
-        border 2px solid darkblue;
-        margin: 5px;
-        color: darkblue;
-        padding: 2px;
-        font-family: 'Amarante', cursive;
-        font-size: 1.5em;
-        text-align: center;
-    `
-    const GamePanel = styled.div `
-        width: 100vw;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        grid-area: GamePanel;
-        margin-bottom: 2px;
-    `
 
     return (
         <Game>
@@ -85,11 +47,7 @@ const App = () => {
                 <Title> Sets </Title>
                 <Detail className="fill"/>
             </Heading>
-            <GamePanel>
-                <Button>New Game</Button>
-                <Score>350</Score>
-                <Button>Add Cards</Button>
-            </GamePanel>
+            <GamePanel />
         <GameBoard />
         <Detail />
         </Game>
