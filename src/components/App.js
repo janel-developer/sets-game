@@ -14,7 +14,6 @@ const App = () => {
             "GamePanel"
             "GameBoard";
     `
-    const accentColor = "rgba(0,200,255,.5)"
     // Styles the heading
     const Heading = styled.div `
         display: flex;
