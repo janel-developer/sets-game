@@ -7,7 +7,11 @@ export function newCardDeck() {
        for (let color of colors) {
            for (let shape of shapes) {
                for (let fill of fills) {
+                   
+                   const faceValue = number[number.length-1]
+                   const key=`${faceValue}|${color}|${shape}|${fill}`
                    cardDeck.push({
+                       id: key,
                        number: number,
                        color: color,
                        shape: shape,
@@ -18,6 +22,26 @@ export function newCardDeck() {
        } 
     }
     return cardDeck
+}
+
+// Sets the card with id to selected
+export function setSelectedCard(cards,id) {
+    return cards.map((card) => {
+        if(card.id === id) 
+            card.selected=true
+        return card
+    })
+}
+
+// Returns true if the card with id is selected
+export function isCardSelected(cards,id) {
+    for(let card of cards) {
+        if(card.id === id && card.selected) {
+            return true
+
+        }
+    }
+    return false
 }
 
 // shuffle - randomises deck

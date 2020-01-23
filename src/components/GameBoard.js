@@ -39,10 +39,7 @@ const GameBoard = () => {
         <Board >
         <Cards>
             {cardsInPlay && cardsInPlay.map((card) => {
-                const {number, color, shape, fill} = card
-                const faceValue = number[number.length-1]
-                const key=`${faceValue}|${color}|${shape}|${fill}`
-                return <SetsCard key={key} color={color} shape={shape} number={number} fill={fill} />
+                return <SetsCard key={card.id} {...card} />
             })}
         </Cards>
         </Board>
