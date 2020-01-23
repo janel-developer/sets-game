@@ -1,7 +1,9 @@
 import React from "react"
 import styled from "styled-components"
+import {useCardContext} from "../config/store"
+import {setSelectedCard, isCardSelected} from "../services/gameServices"
 
-const SetsCard = ({color, number, shape, fill}) => {
+const SetsCard = ({id, color, number, shape, fill}) => {
     // Get inner width of the window
     const innerWidth = window.innerWidth
     // Cards are 150px wide for md/large screen, and 75px wide for sm/xs screen
@@ -22,6 +24,12 @@ const SetsCard = ({color, number, shape, fill}) => {
     // Set border radius for circle and oval
     const borderRadius = (shape === "circle") ? "50%" : "50px / 100px"
 
+    const selectedColor = "rgba(0,200,255,.3)"
+    const {store,dispatch} = useCardContext()
+    const {cardsInPlay} = store
+    
+    // If card is selected, set background color to show selected
+    const cardSelected = isCardSelected(cardsInPlay,id)
     // Styles the card with a black border
     // Centers shapes on the card
     const Card = styled.div `
@@ -33,6 +41,12 @@ const SetsCard = ({color, number, shape, fill}) => {
         align-items: center;
         height: ${cardHeight}px;
         width: ${cardWidth}px;
+        transition: 0.5s all ease-out;
+        background-color: ${cardSelected ? selectedColor : "white"};
+        &:hover {
+            border: 2px solid red;
+            background-color: ${selectedColor}
+        }
     `
 
     // Creates the card shapes and fill
@@ -47,15 +61,25 @@ const SetsCard = ({color, number, shape, fill}) => {
         mask-size: 200%;
         mask-position: center;
         margin: .5em;
-    `
-   return (
-    <Card>
-        { number.map((key) => 
-            (fill === "fill") 
-            ? <CardShape key={key} className="fill" /> 
-            : <CardShape key={key} />
-        )}
-    </Card>
+    
+    // Sets selected on the card that is selected    `
+    function selectCardAction(id) {
+        let updatedCards = [...cardsInPlay]
+        updatedCards = setSelectedCard(cardsInPlay,id)
+        dispatch({
+            type: "setCardsInPlay",
+            data: updatedCards
+        })
+    }
+
+    return (
+        <Card onClick={() => selectCardAction(id)} >
+            { number.map((key) => 
+                (fill === "fill") 
+                ? <CardShape key={key} className="fill" /> 
+                : <CardShape key={key} />
+            )}
+        </Card>
    )          
 }
 
