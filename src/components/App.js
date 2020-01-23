@@ -1,12 +1,11 @@
 import React from "react"
 import styled from "styled-components"
-import GameBoard from "./GameBoard"
-import GamePanel from "./GamePanel"
+import Game from "./Game"
 
 const App = () => {
 
     // Creates the grid for the app
-    const Game = styled.div `
+    const GameLayout = styled.div `
         display: grid;
         border-size: 3px;
         grid-template-areas: 
@@ -40,16 +39,15 @@ const App = () => {
     `
 
     return (
-        <Game>
+        <GameLayout>
             <Heading >
                 <Detail className="fill"/>
                 <Title> Sets </Title>
                 <Detail className="fill"/>
             </Heading>
-            <GamePanel />
-        <GameBoard />
-        <Detail />
-        </Game>
+            <Game />
+            <Detail />
+        </GameLayout>
     )
 }
 

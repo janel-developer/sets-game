@@ -1,19 +1,13 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 import styled from "styled-components"
 import SetsCard from "./SetsCard"
-import {newCardDeck, shuffle} from "../services/gameServices"
+import {useCardContext} from "../config/store"
 
 const GameBoard = () => {
 
     const innerWidth = window.innerWidth;
     let width = "100vw"
 
-    const [cardsInPlay,setCardsInPlay] = useState([])
-
-    useEffect(() => {
-        setCardsInPlay(shuffle(newCardDeck()))
-        return () => {}
-    },[])    
 
     // If a medium/large screen, use 620px wide board
     // If small/xs screen, use 100vw
@@ -37,10 +31,14 @@ const GameBoard = () => {
         align-items: center;
         align-content: center;
     `
+
+    const {store} = useCardContext()
+    const {cardsInPlay} = store
+
     return (
         <Board >
         <Cards>
-            {cardsInPlay.map((card) => {
+            {cardsInPlay && cardsInPlay.map((card) => {
                 const {number, color, shape, fill} = card
                 const faceValue = number[number.length-1]
                 const key=`${faceValue}|${color}|${shape}|${fill}`
