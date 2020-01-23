@@ -45,12 +45,11 @@ export function shuffle(cards) {
 	}
 
 	return cards;
-
-
 }
 
 // deal(num) - returns num cards from the top of the deck (and removes them from the deck)
-export function deal(numberOfCards) {
+export function deal(cards, numberOfCards) {
+    return cards.splice(0,numberOfCards)
 
 }
 

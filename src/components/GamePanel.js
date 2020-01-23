@@ -1,5 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import {useCardContext} from "../config/store"
+import {deal, shuffle, newCardDeck} from "../services/gameServices"
 
 const GamePanel = () => {
 
@@ -43,10 +45,28 @@ const GamePanel = () => {
         grid-area: GamePanel;
         margin-bottom: 2px;
     `
+
+    const {dispatch} = useCardContext()
+    
+    function startNewGame () {
+        // create a new shuffled deck
+        let newDeck = shuffle(newCardDeck())
+        let firstHand = deal(newDeck,12)
+        dispatch({
+            type: "setDeck",
+            data: newDeck
+        })
+        // deal 12 cards
+        dispatch({
+            type: "setCardsInPlay",
+            data: firstHand
+        })
+    }
+    
     return (
 
         <ControlPanel>
-            <Button>New Game</Button>
+            <Button onClick={startNewGame}>New Game</Button>
             <Score>350</Score>
             <Button>Add Cards</Button>
         </ControlPanel>
