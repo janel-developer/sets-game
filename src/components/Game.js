@@ -8,7 +8,8 @@ const Game = () => {
 
     const initialState = {
         deck: [],
-        cardsInPlay: []
+        cardsInPlay: [],
+        selectedCards: []
     }
     const [store,dispatch] = useReducer(reducer, initialState)
 

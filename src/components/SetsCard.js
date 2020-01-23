@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import {useCardContext} from "../config/store"
-import {setSelectedCard, isCardSelected} from "../services/gameServices"
+import {isCardSelected} from "../services/gameServices"
 
 const SetsCard = ({id, color, number, shape, fill}) => {
     // Get inner width of the window
@@ -26,10 +26,9 @@ const SetsCard = ({id, color, number, shape, fill}) => {
 
     const selectedColor = "rgba(0,200,255,.3)"
     const {store,dispatch} = useCardContext()
-    const {cardsInPlay} = store
-    
+    const {selectedCards} = store
     // If card is selected, set background color to show selected
-    const cardSelected = isCardSelected(cardsInPlay,id)
+    const cardSelected = isCardSelected(selectedCards,id)
     // Styles the card with a black border
     // Centers shapes on the card
     const Card = styled.div `
@@ -64,11 +63,9 @@ const SetsCard = ({id, color, number, shape, fill}) => {
     
     // Sets selected on the card that is selected    `
     function selectCardAction(id) {
-        let updatedCards = [...cardsInPlay]
-        updatedCards = setSelectedCard(cardsInPlay,id)
         dispatch({
-            type: "setCardsInPlay",
-            data: updatedCards
+            type: "addSelectedCard",
+            data: id
         })
     }
 
