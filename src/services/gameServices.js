@@ -8,7 +8,7 @@ export function newCardDeck() {
            for (let shape of shapes) {
                for (let fill of fills) {
                    
-                   const faceValue = number[number.length-1]
+                   const faceValue = number.length
                    const key=`${faceValue}|${color}|${shape}|${fill}`
                    cardDeck.push({
                        id: key,

@@ -25,9 +25,9 @@ describe("newCardDeck", () => {
         })
     }
     for(let number of numbers){
-        const faceValue = number[number.length-1]
+        const faceValue = number.length
         it(`contains 27 ${faceValue} cards`, () => {
-            expect(fixtures.deck.filter((card) => card.number[card.number.length-1] === faceValue).length).toEqual(27)
+            expect(fixtures.deck.filter((card) => card.number.length === faceValue).length).toEqual(27)
         })
     }
 })
