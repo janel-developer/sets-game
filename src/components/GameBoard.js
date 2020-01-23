@@ -1,11 +1,19 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import styled from "styled-components"
 import SetsCard from "./SetsCard"
+import {newCardDeck, shuffle} from "../services/gameServices"
 
 const GameBoard = () => {
 
     const innerWidth = window.innerWidth;
     let width = "100vw"
+
+    const [cardsInPlay,setCardsInPlay] = useState([])
+
+    useEffect(() => {
+        setCardsInPlay(shuffle(newCardDeck()))
+        return () => {}
+    },[])    
 
     // If a medium/large screen, use 620px wide board
     // If small/xs screen, use 100vw
@@ -32,19 +40,12 @@ const GameBoard = () => {
     return (
         <Board >
         <Cards>
-            <SetsCard color="darkblue" shape="circle" number={[1]} fill="solid" />
-            <SetsCard color="red" shape="square" number={[1,2]} fill="empty" />
-            <SetsCard color="black" shape="circle" number={[1,2]} fill="fill" />
-            <SetsCard color="darkblue" shape="oval" number={[1]} fill="fill" />
-            <SetsCard color="red" shape="circle" number={[1,2,3]} fill="empty" />
-            <SetsCard color="black" shape="square" number={[1,2,3]} fill="solid" />
-            <SetsCard color="darkblue" shape="square" number={[1]} fill="fill" />
-            <SetsCard color="red" shape="oval" number={[1,2,3]} fill="solid" />
-            <SetsCard color="black" shape="circle" number={[1,2,3]} fill="empty" />
-            <SetsCard color="darkblue" shape="oval" number={[1,2]} fill="fill" />
-            <SetsCard color="black" shape="circle" number={[1,2,3]} fill="fill" />
-            <SetsCard color="red" shape="oval" number={[1,2,3]} fill="fill" />
-
+            {cardsInPlay.map((card) => {
+                const {number, color, shape, fill} = card
+                const faceValue = number[number.length-1]
+                const key=`${faceValue}|${color}|${shape}|${fill}`
+                return <SetsCard key={key} color={color} shape={shape} number={number} fill={fill} />
+            })}
         </Cards>
         </Board>
 
