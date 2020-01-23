@@ -10,6 +10,11 @@ export default function reducer(state, action) {
                 ...state,
                 cardsInPlay: action.data
             }
+        case "addSelectedCard":
+            return {
+                ...state,
+                selectedCards: [...state.selectedCards,action.data]
+            }
         default:
             return state
     }

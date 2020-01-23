@@ -24,21 +24,11 @@ export function newCardDeck() {
     return cardDeck
 }
 
-// Sets the card with id to selected
-export function setSelectedCard(cards,id) {
-    return cards.map((card) => {
-        if(card.id === id) 
-            card.selected=true
-        return card
-    })
-}
-
 // Returns true if the card with id is selected
-export function isCardSelected(cards,id) {
-    for(let card of cards) {
-        if(card.id === id && card.selected) {
+export function isCardSelected(selectedCardIds, id) {
+    for(let cardId of selectedCardIds) {
+        if(cardId === id) {
             return true
-
         }
     }
     return false
