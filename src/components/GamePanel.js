@@ -46,7 +46,8 @@ const GamePanel = () => {
         margin-bottom: 2px;
     `
 
-    const {dispatch} = useCardContext()
+    const {store,dispatch} = useCardContext()
+    const {score} = store
     
     function startNewGame () {
         // create a new shuffled deck
@@ -67,7 +68,7 @@ const GamePanel = () => {
 
         <ControlPanel>
             <Button onClick={startNewGame}>New Game</Button>
-            <Score>350</Score>
+            <Score>{score}</Score>
             <Button>Add Cards</Button>
         </ControlPanel>
     )

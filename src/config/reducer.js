@@ -25,6 +25,11 @@ export default function reducer(state, action) {
                 ...state,
                 selectedCards: []
             }
+        case "updateScore":
+            return {
+                ...state,
+                score: state.score + action.data
+            }
         default:
             return state
     }
