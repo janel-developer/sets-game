@@ -15,6 +15,11 @@ export default function reducer(state, action) {
                 ...state,
                 selectedCards: [...state.selectedCards,action.data]
             }
+        case "removeSelectedCard":
+            return {
+                ...state,
+                selectedCards: state.selectedCards.filter((card) => card !==action.data)
+            }
         default:
             return state
     }
