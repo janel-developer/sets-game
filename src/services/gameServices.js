@@ -34,6 +34,14 @@ export function isCardSelected(selectedCardIds, id) {
     return false
 }
 
+// Returns true if there are 3 selected cards and they 
+// make up a valid set according to game rules
+export function selectedCardsAreSet(selectedCardIds) {
+    console.log("in selectedCardsAreSet with", selectedCardIds)
+    // TBD
+}
+
+
 // shuffle - randomises deck
 /**
  * Randomly shuffle an array

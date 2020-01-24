@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import {useCardContext} from "../config/store"
+import EventEmitter from "../config/EventEmitter"
 import {isCardSelected} from "../services/gameServices"
 
 const SetsCard = ({id, color, number, shape, fill}) => {
@@ -63,10 +64,22 @@ const SetsCard = ({id, color, number, shape, fill}) => {
     
     // Sets selected on the card that is selected    `
     function selectCardAction(id) {
-        dispatch({
-            type: "addSelectedCard",
-            data: id
-        })
+        if (selectedCards.includes(id) ) {
+            // If card is currently selected, deselect it
+            dispatch({
+                type: "removeSelectedCard",
+                data: id
+            })
+        }
+        else {
+            // Otherwise add this to selected cards and publish an event
+            // so the game logic will react when 3 cards are selected
+            EventEmitter.publish("cardSelected", [...selectedCards,id])
+            dispatch({
+                type: "addSelectedCard",
+                data: id
+            })
+        }
     }
 
     return (
