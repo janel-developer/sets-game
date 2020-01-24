@@ -34,6 +34,9 @@ const Game = () => {
                     // We don't have a set. Decrement score and display something to the player
                     // TBD
                 }
+                dispatch({
+                    type: "clearSelectedCards"
+                })
             }
         }
         // Subscribe to game events for card selections

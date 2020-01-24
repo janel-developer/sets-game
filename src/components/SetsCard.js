@@ -26,6 +26,7 @@ const SetsCard = ({id, color, number, shape, fill}) => {
     const borderRadius = (shape === "circle") ? "50%" : "50px / 100px"
 
     const selectedColor = "rgba(0,200,255,.3)"
+    const hoverColor = "rgba(229,168,168,.5)"
     const {store,dispatch} = useCardContext()
     const {selectedCards} = store
     // If card is selected, set background color to show selected
@@ -45,7 +46,7 @@ const SetsCard = ({id, color, number, shape, fill}) => {
         background-color: ${cardSelected ? selectedColor : "white"};
         &:hover {
             border: 2px solid red;
-            background-color: ${selectedColor}
+            background-color: ${hoverColor}
         }
     `
 
@@ -74,11 +75,11 @@ const SetsCard = ({id, color, number, shape, fill}) => {
         else {
             // Otherwise add this to selected cards and publish an event
             // so the game logic will react when 3 cards are selected
-            EventEmitter.publish("cardSelected", [...selectedCards,id])
             dispatch({
                 type: "addSelectedCard",
                 data: id
             })
+            EventEmitter.publish("cardSelected", [...selectedCards,id])
         }
     }
 
