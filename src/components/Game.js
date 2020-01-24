@@ -5,6 +5,7 @@ import reducer from "../config/reducer"
 import {CardContext} from "../config/store"
 import EventEmitter from "../config/EventEmitter"
 import {selectedCardsAreSet} from "../services/gameServices"
+import {pointsForSet,pointsLostForNoSet} from "../services/gameConstants"
 
 const Game = () => {
 
@@ -17,28 +18,38 @@ const Game = () => {
     }
     const [store,dispatch] = useReducer(reducer, initialState)
 
-    // We only need to subscribe once to game events, so do it as an effect.
-    // Define the event handler in the scope of useEffect so it isn't a dependency.
-    useEffect(() => {
-        // Updates state as appropriate when three cards are selected
-        // Gets called when a card is selected on the gameboard by subscribing to the "cardSelected" event.
-        // Selection events are published by the cards themselves (in SetsCard).
-        function cardsSelectedEventHandler(selectedCardIds) {
-            // See if we have three selected cards, and if so, see if it's a set
-            if(selectedCardIds.length === 3) {
-                if(selectedCardsAreSet(selectedCardIds)) {
-                    // We have a set! Increment score and remove cards from cardsInPlay
-                    // TBD
-                }
-                else {
-                    // We don't have a set. Decrement score and display something to the player
-                    // TBD
-                }
+    // Updates state as appropriate when three cards are selected
+    // Gets called when a card is selected on the gameboard by subscribing to the "cardSelected" event.
+    // Selection events are published by the cards themselves (in SetsCard).
+    function cardsSelectedEventHandler(selectedCardIds) {
+        // See if we have three selected cards, and if so, see if it's a set
+        if(selectedCardIds.length === 3) {
+            if(selectedCardsAreSet(selectedCardIds)) {
+                // We have a set! Increment score and remove cards from cardsInPlay
                 dispatch({
-                    type: "clearSelectedCards"
+                    type: "updateScore",
+                    data: pointsForSet
+                })
+                dispatch({
+                    type: "removeCardsFromPlay",
+                    data: selectedCardIds
                 })
             }
+            else {
+                // We don't have a set. Decrement score and display something to the player
+                // TBD: display indication to the player (other than score)
+                dispatch({
+                    type: "updateScore",
+                    data: pointsLostForNoSet
+                })
+            }
+            dispatch({
+                type: "clearSelectedCards"
+            })
         }
+    }
+    // We only need to subscribe once to game events, so do it as an effect.
+    useEffect(() => {
         // Subscribe to game events for card selections
         EventEmitter.subscribe("cardSelected", cardsSelectedEventHandler)
         return () => {}
