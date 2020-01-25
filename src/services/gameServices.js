@@ -38,7 +38,6 @@ export function isCardSelected(selectedCardIds, id) {
 // make up a valid set according to game rules
 // Card ids are in the form: "number|color|shape|fill"
 export function selectedCardsAreSet(selectedCardIds) {
-    console.log("in selectedCardsAreSet with", selectedCardIds)
     // If not 3 cards, return false
     if (selectedCardIds.length !== 3) return false
     const card1 = selectedCardIds[0].split("|")
@@ -112,7 +111,62 @@ export function deal(cards, numberOfCards) {
 
 }
 
+// Used by findSets to find all pair permutations in cardsInPlay
+export function getAllPairs(cardsInPlay) {
+    let allPairs = []
+    for(let ind in cardsInPlay) {
+        // for each index, make a pair with card at this index and all cards after this index
+        for(let otherInd = parseInt(ind)+1; otherInd < cardsInPlay.length; otherInd++) {
+            const pair = [cardsInPlay[ind],cardsInPlay[otherInd]]
+            allPairs.push(pair)
+        }
+    }
+    return allPairs
+}
+
+// finds number for missing card in set
+export function missingNumber(pair) {
+    const card1 = pair[0]
+    const card2 = pair[1]
+    let setCardNumber = card1.number.length
+    if (card1.number.length !== card2.number.length) {
+        const sum = card1.number.length + card2.number.length
+        setCardNumber = sum > 3 
+                        ? Math.abs(card1.number.length - card2.number.length)
+                        : 3
+    }
+    return setCardNumber
+}
+
+// finds color for missing card in set
+export function missingColor(pair) {
+    const card1 = pair[0]
+    const card2 = pair[1]
+    let setCardColor = card1.color
+    if(card1.color !== card2.color) {
+        setCardColor = colors.filter((color) => color !== card1.color && color !== card2.color)[0]
+    }
+    return setCardColor
+}
+
+// finds shape for missing card in set
+export function missingShape(pair) {
+    const card1 = pair[0]
+    const card2 = pair[1]
+    let setCardShape = card1.shape
+    if(card1.shape !== card2.shape) {
+        setCardShape = shapes.filter((shape) => shape !== card1.shape && shape !== card2.shape)[0]
+    }
+    return setCardShape
+}
+
 // findSets(cards) - given a list of cards, returns all possible sets in those cards
 export function findSets(cardsInPlay) {
+    if(!cardsInPlay || cardsInPlay.length === 0) return []
+    // Find all permutations of 2 cards
+    const allPairs = getAllPairs(cardsInPlay)
+    // For each pair, there is one card that makes a set. If that card is in play, store the set
+    for(let pair of allPairs) {
 
+    }
 }
