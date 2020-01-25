@@ -10,6 +10,11 @@ export default function reducer(state, action) {
                 ...state,
                 cardsInPlay: action.data
             }
+        case "removeSetFromPlay":
+            return {
+                ...state,
+                cardsInPlay: state.cardsInPlay.filter((card) => !action.data.includes(card.id))
+            }
         case "addSelectedCard":
             return {
                 ...state,

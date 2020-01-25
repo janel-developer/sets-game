@@ -31,7 +31,7 @@ const Game = () => {
                     data: pointsForSet
                 })
                 dispatch({
-                    type: "removeCardsFromPlay",
+                    type: "removeSetFromPlay",
                     data: selectedCardIds
                 })
             }
