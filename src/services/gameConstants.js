@@ -2,7 +2,10 @@ export const one = [1]
 export const two = [1,2]
 export const three = [1,2,3]
 export const numbers = [one,two,three]
-export const colors = ["red", "darkblue", "black"]
+export const color1 = "red"
+export const color2 = "blue"
+export const color3 = "black"
+export const colors = [color1, color2, color3]
 export const shapes = ["square", "circle", "oval"]
 export const fills = ["solid", "empty", "fill"]
 
