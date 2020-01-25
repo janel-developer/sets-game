@@ -160,13 +160,31 @@ export function missingShape(pair) {
     return setCardShape
 }
 
+// finds fill for missing card in set
+export function missingFill(pair) {
+    const card1 = pair[0]
+    const card2 = pair[1]
+    let setCardFill = card1.fill
+    if(card1.fill !== card2.fill) {
+        setCardFill = fills.filter((fill) => fill !== card1.fill && fill !== card2.fill)[0]
+    }
+    return setCardFill
+
+}
+
 // findSets(cards) - given a list of cards, returns all possible sets in those cards
+// return an array of sets with card ids
 export function findSets(cardsInPlay) {
-    if(!cardsInPlay || cardsInPlay.length === 0) return []
     // Find all permutations of 2 cards
     const allPairs = getAllPairs(cardsInPlay)
+    let allSets = []
     // For each pair, there is one card that makes a set. If that card is in play, store the set
     for(let pair of allPairs) {
-
+        // Get id (the number|color|shape|fill) of the missing card for each set
+        let missingId = `${missingNumber(pair)|missingColor(pair)|missingShape(pair)|missingFill(pair)}`
+        // See if there is a card in play with that id
+        let set = cardsInPlay.find(card => card.id === missingId)
+        set && allSets.push(set) 
     }
+    return allSets
 }

@@ -5,6 +5,8 @@ import {
     getAllPairs, 
     missingNumber,
     missingColor,
+    missingShape,
+    missingFill,
     findSets} from "./gameServices"
 import {colors, numbers, shapes, fills} from "./gameConstants"
 
@@ -72,6 +74,182 @@ beforeAll(() => {
         id: `3|${colors[1]}|circle|solid`,
         number: [1,2,3],
         color: colors[1],
+        shape: "circle",
+        fill: "solid"
+    }
+    fixtures.oneCircle =
+    {
+        id: `1|${colors[1]}|circle|solid`,
+        number: [1],
+        color: colors[1],
+        shape: "circle",
+        fill: "solid"
+    }
+    fixtures.twoCircle =
+    {
+        id: `2|${colors[1]}|circle|solid`,
+        number: [1,2],
+        color: colors[1],
+        shape: "circle",
+        fill: "solid"
+    }
+    fixtures.oneSquare =
+    {
+        id: `1|${colors[1]}|square|solid`,
+        number: [1],
+        color: colors[1],
+        shape: "square",
+        fill: "solid"
+    }
+    fixtures.twoSquare =
+    {
+        id: `2|${colors[1]}|square|solid`,
+        number: [1,2],
+        color: colors[1],
+        shape: "square",
+        fill: "solid"
+    }
+    fixtures.oneOval =
+    {
+        id: `1|${colors[1]}|oval|solid`,
+        number: [1],
+        color: colors[1],
+        shape: "oval",
+        fill: "solid"
+    }
+    fixtures.twoOval =
+    {
+        id: `2|${colors[1]}|oval|solid`,
+        number: [1,2],
+        color: colors[1],
+        shape: "oval",
+        fill: "solid"
+    }
+    fixtures.oneSolid =
+    {
+        id: `1|${colors[1]}|circle|solid`,
+        number: [1],
+        color: colors[1],
+        shape: "circle",
+        fill: "solid"
+    }
+    fixtures.twoSolid =
+    {
+        id: `2|${colors[1]}|circle|solid`,
+        number: [1,2],
+        color: colors[1],
+        shape: "circle",
+        fill: "solid"
+    }
+    fixtures.oneEmpty =
+    {
+        id: `1|${colors[1]}|square|empty`,
+        number: [1],
+        color: colors[1],
+        shape: "square",
+        fill: "empty"
+    }
+    fixtures.twoEmpty =
+    {
+        id: `2|${colors[1]}|square|empty`,
+        number: [1,2],
+        color: colors[1],
+        shape: "square",
+        fill: "empty"
+    }
+    fixtures.oneFill =
+    {
+        id: `1|${colors[1]}|oval|fill`,
+        number: [1],
+        color: colors[1],
+        shape: "oval",
+        fill: "fill"
+    }
+    fixtures.twoFill =
+    {
+        id: `2|${colors[1]}|oval|fill`,
+        number: [1,2],
+        color: colors[1],
+        shape: "oval",
+        fill: "fill"
+    }
+    fixtures.oneColor1CircleSolid = 
+    {
+        id: `1|${colors[0]}|circle|solid`,
+        number: [1],
+        color: colors[0],
+        shape: "circle",
+        fill: "solid"
+    }
+    fixtures.oneColor1CircleEmpty = 
+    {
+        id: `1|${colors[0]}|circle|empty`,
+        number: [1],
+        color: colors[0],
+        shape: "circle",
+        fill: "empty"
+    }
+    fixtures.oneColor1CircleFill = 
+    {
+        id: `1|${colors[0]}|circle|fill`,
+        number: [1],
+        color: colors[0],
+        shape: "circle",
+        fill: "fill"
+    }
+    fixtures.oneColor2CircleSolid = 
+    {
+        id: `1|${colors[1]}|circle|solid`,
+        number: [1],
+        color: colors[1],
+        shape: "circle",
+        fill: "solid"
+    }
+    fixtures.oneColor2CircleEmpty = 
+    {
+        id: `1|${colors[1]}|circle|empty`,
+        number: [1],
+        color: colors[1],
+        shape: "circle",
+        fill: "empty"
+    }
+    fixtures.oneColor2CircleFill = 
+    {
+        id: `1|${colors[1]}|circle|fill`,
+        number: [1],
+        color: colors[1],
+        shape: "circle",
+        fill: "fill"
+    }
+    fixtures.twoColor1CircleSolid = 
+    {
+        id: `2|${colors[0]}|circle|solid`,
+        number: [1,2],
+        color: colors[0],
+        shape: "circle",
+        fill: "solid"
+    }
+    fixtures.twoColor2CircleSolid = 
+    {
+        id: `2|${colors[1]}|circle|solid`,
+        number: [1,2],
+        color: colors[1],
+        shape: "circle",
+        fill: "solid"
+    }
+    fixtures.twoColor3CircleSolid = 
+    {
+        id: `2|${colors[2]}|circle|solid`,
+        number: [1,2],
+        color: colors[2],
+        shape: "circle",
+        fill: "solid"
+    }
+    fixtures.threeColor1CircleSolid = 
+    {
+        id: `3|${colors[0]}|circle|solid`,
+        number: [1,2,3],
+        color: colors[0],
         shape: "circle",
         fill: "solid"
     }
@@ -259,94 +437,54 @@ describe("missingColor", () => {
         expect(missingColor([fixtures.oneColor1,fixtures.oneColor2])).toEqual(colors[2])
     })
 })
-describe("findSets", () => {
-    beforeAll(() => {
-        fixtures.oneColor1CircleSolid = 
-        {
-            id: `1|${colors[0]}|circle|solid`,
-            number: [1],
-            color: colors[0],
-            shape: "circle",
-            fill: "solid"
-        }
-        fixtures.oneColor1CircleEmpty = 
-        {
-            id: `1|${colors[0]}|circle|empty`,
-            number: [1],
-            color: colors[0],
-            shape: "circle",
-            fill: "empty"
-        }
-        fixtures.oneColor1CircleFill = 
-        {
-            id: `1|${colors[0]}|circle|fill`,
-            number: [1],
-            color: colors[0],
-            shape: "circle",
-            fill: "fill"
-        }
-        fixtures.oneColor2CircleSolid = 
-        {
-            id: `1|${colors[1]}|circle|solid`,
-            number: [1],
-            color: colors[1],
-            shape: "circle",
-            fill: "solid"
-        }
-        fixtures.oneColor2CircleEmpty = 
-        {
-            id: `1|${colors[1]}|circle|empty`,
-            number: [1],
-            color: colors[1],
-            shape: "circle",
-            fill: "empty"
-        }
-        fixtures.oneColor2CircleFill = 
-        {
-            id: `1|${colors[1]}|circle|fill`,
-            number: [1],
-            color: colors[1],
-            shape: "circle",
-            fill: "fill"
-        }
-        fixtures.twoColor1CircleSolid = 
-        {
-            id: `2|${colors[0]}|circle|solid`,
-            number: [1,2],
-            color: colors[0],
-            shape: "circle",
-            fill: "solid"
-        }
-        fixtures.twoColor2CircleSolid = 
-        {
-            id: `2|${colors[1]}|circle|solid`,
-            number: [1,2],
-            color: colors[1],
-            shape: "circle",
-            fill: "solid"
-        }
-        fixtures.twoColor3CircleSolid = 
-        {
-            id: `2|${colors[2]}|circle|solid`,
-            number: [1,2],
-            color: colors[2],
-            shape: "circle",
-            fill: "solid"
-        }
-        fixtures.threeColor1CircleSolid = 
-        {
-            id: `3|${colors[0]}|circle|solid`,
-            number: [1,2,3],
-            color: colors[0],
-            shape: "circle",
-            fill: "solid"
-        }
+describe("missingShape", () => {
+    it("should return circle if both pairs have circle", () => {
+        expect(missingShape([fixtures.oneCircle,fixtures.twoCircle])).toEqual("circle")
     })
+    it("should return square if both pairs have square", () => {
+        expect(missingShape([fixtures.oneSquare,fixtures.twoSquare])).toEqual("square")
+    })
+    it("should return oval if both pairs have oval", () => {
+        expect(missingShape([fixtures.oneOval,fixtures.twoOval])).toEqual("oval")
+    })
+    it("should return circle if one has square and one has oval", () => {
+        expect(missingShape([fixtures.oneSquare,fixtures.oneOval])).toEqual("circle")
+    })
+    it("should return square if one has circle and one has oval", () => {
+        expect(missingShape([fixtures.oneCircle,fixtures.oneOval])).toEqual("square")
+    })
+    it("should return oval if one has circle and one has square", () => {
+        expect(missingShape([fixtures.oneCircle,fixtures.oneSquare])).toEqual("oval")
+    })
+})
+describe("missingFill", () => {
+    it("should return solid if both pairs have solid", () => {
+        expect(missingFill([fixtures.oneSolid,fixtures.twoSolid])).toEqual("solid")
+    })
+    it("should return empty if both pairs have empty", () => {
+        expect(missingFill([fixtures.oneEmpty,fixtures.twoEmpty])).toEqual("empty")
+    })
+    it("should return fill if both pairs have fill", () => {
+        expect(missingFill([fixtures.oneFill,fixtures.twoFill])).toEqual("fill")
+    })
+    it("should return solid if one has empty and one has fill", () => {
+        expect(missingFill([fixtures.oneEmpty,fixtures.oneFill])).toEqual("solid")
+    })
+    it("should return empty if one has solid and one has fill", () => {
+        expect(missingFill([fixtures.oneSolid,fixtures.oneFill])).toEqual("empty")
+    })
+    it("should return fill if one has solid and one has empty", () => {
+        expect(missingFill([fixtures.oneSolid,fixtures.oneEmpty])).toEqual("fill")
+    })
+})
+describe("findSets", () => {
     it("returns an empty array when there are no cards in play", () => {
         expect(findSets([])).toEqual([])
     })
-    it.skip("returns an empty array when there are no sets", () => {
-        const cards = [fixtures.oneColor1CircleEmpty, fixtures.oneColor1CircleFill,fixtures.threeColor1CircleSolid]
-        expect(findSets(cards)).toEqual([])
+    describe("returns an empty array when there are no sets", () => {
+        it("returns an empty array when there are ", () => {
+            const cards = [fixtures.oneColor1CircleEmpty, fixtures.oneColor1CircleFill,fixtures.threeColor1CircleSolid]
+            expect(findSets(cards)).toEqual([])
+        })
     })
 })
