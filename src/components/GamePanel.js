@@ -63,6 +63,13 @@ const GamePanel = () => {
             type: "setCardsInPlay",
             data: firstHand
         })
+        dispatch({
+            type: "resetScore"
+        })
+        dispatch({
+            type: "setPlayerMessage",
+            data: null
+        })
     }
 
     function addCards () {
