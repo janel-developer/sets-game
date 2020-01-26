@@ -1,6 +1,7 @@
 import React,{Fragment, useReducer, useEffect} from "react"
 import GamePanel from "./GamePanel"
 import GameBoard from "./GameBoard"
+import PlayerMessage from "./PlayerMessage"
 import reducer from "../config/reducer"
 import {CardContext} from "../config/store"
 import EventEmitter from "../config/EventEmitter"
@@ -17,6 +18,7 @@ const Game = () => {
         playerMessage: null
     }
     const [store,dispatch] = useReducer(reducer, initialState)
+    const {playerMessage} = store
 
     // Updates state as appropriate when three cards are selected
     // Gets called when a card is selected on the gameboard by subscribing to the "cardSelected" event.
@@ -59,6 +61,7 @@ const Game = () => {
         <Fragment>
             <CardContext.Provider value={{store,dispatch}} >
                 <GamePanel />
+                {playerMessage && <PlayerMessage message={playerMessage} />}
                 <GameBoard />
             </CardContext.Provider>
         </Fragment>

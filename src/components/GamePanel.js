@@ -75,6 +75,13 @@ const GamePanel = () => {
         }
         // If there aren't more sets, deal 3 more cards
         else {
+            if(deck.length === 0) {
+                // The game is over!
+                dispatch({
+                    type: "setPlayerMessage",
+                    data: "You did it! You've found all the sets!"
+                })
+            }
             let newCards = deal(deck,3)
             dispatch({
                 type: "addCardsToPlay",
