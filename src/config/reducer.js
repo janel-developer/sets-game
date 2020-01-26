@@ -10,6 +10,11 @@ export default function reducer(state, action) {
                 ...state,
                 cardsInPlay: action.data
             }
+        case "addCardsToPlay":
+            return {
+                ...state,
+                cardsInPlay: [...state.cardsInPlay, ...action.data]
+            }
         case "removeSetFromPlay":
             return {
                 ...state,

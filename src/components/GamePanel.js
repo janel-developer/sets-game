@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import {useCardContext} from "../config/store"
-import {deal, shuffle, newCardDeck} from "../services/gameServices"
+import {deal, shuffle, newCardDeck, findSets} from "../services/gameServices"
+import {pointsLostForMissingSet} from "../services/gameConstants"
 
 const GamePanel = () => {
 
@@ -47,7 +48,7 @@ const GamePanel = () => {
     `
 
     const {store,dispatch} = useCardContext()
-    const {score} = store
+    const {score, cardsInPlay, deck} = store
     
     function startNewGame () {
         // create a new shuffled deck
@@ -63,13 +64,31 @@ const GamePanel = () => {
             data: firstHand
         })
     }
+
+    function addCards () {
+        // If there are any sets on the board, decrement points
+        if(findSets(cardsInPlay).length > 0) {
+            dispatch({
+                type: "updateScore",
+                data: pointsLostForMissingSet
+            })
+        }
+        // If there aren't more sets, deal 3 more cards
+        else {
+            let newCards = deal(deck,3)
+            dispatch({
+                type: "addCardsToPlay",
+                data: newCards
+            })
+        }
+    }
     
     return (
 
         <ControlPanel>
             <Button onClick={startNewGame}>New Game</Button>
             <Score>{score}</Score>
-            <Button>Add Cards</Button>
+            <Button onClick={addCards}>Add Cards</Button>
         </ControlPanel>
     )
 
