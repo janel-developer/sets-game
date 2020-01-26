@@ -181,10 +181,10 @@ export function findSets(cardsInPlay) {
     // For each pair, there is one card that makes a set. If that card is in play, store the set
     for(let pair of allPairs) {
         // Get id (the number|color|shape|fill) of the missing card for each set
-        let missingId = `${missingNumber(pair)|missingColor(pair)|missingShape(pair)|missingFill(pair)}`
+        let missingId = `${missingNumber(pair)}|${missingColor(pair)}|${missingShape(pair)}|${missingFill(pair)}`
         // See if there is a card in play with that id
         let set = cardsInPlay.find(card => card.id === missingId)
-        set && allSets.push(set) 
+        set && allSets.push(set.id) 
     }
-    return allSets
+    return allSets.sort()
 }
