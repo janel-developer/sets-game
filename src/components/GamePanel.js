@@ -27,6 +27,16 @@ const GamePanel = () => {
             border: 2px solid darkblue;
         }
     `
+    const HintButton = styled(Button) `
+        width: 50vw;
+        background: darkblue;
+        color: white;
+        &:hover {
+            background: ${accentColor};
+            color: black;
+            border: 2px solid darkblue;
+        }
+    `
 
     const Score = styled.div `
         width: 25vw;
@@ -72,6 +82,22 @@ const GamePanel = () => {
         })
     }
 
+    function dealThreeCards() {
+        if(deck.length === 0) {
+            // The game is over!
+            dispatch({
+                type: "setPlayerMessage",
+                data: "You did it! You've found all the sets!"
+            })
+        }
+        let newCards = deal(deck,3)
+        dispatch({
+            type: "addCardsToPlay",
+            data: newCards
+        })
+
+    }
+
     function addCards () {
         // If there are any sets on the board, decrement points
         if(findSets(cardsInPlay).length > 0) {
@@ -82,27 +108,44 @@ const GamePanel = () => {
         }
         // If there aren't more sets, deal 3 more cards
         else {
-            if(deck.length === 0) {
-                // The game is over!
-                dispatch({
-                    type: "setPlayerMessage",
-                    data: "You did it! You've found all the sets!"
-                })
-            }
-            let newCards = deal(deck,3)
-            dispatch({
-                type: "addCardsToPlay",
-                data: newCards
-            })
+            dealThreeCards()
         }
     }
-    
+
+    function showHint() {
+        // Make sure there are cards in play
+        if(cardsInPlay.length === 0) return
+        // See if there are any sets in play
+        const sets = findSets(cardsInPlay)
+        if(sets.length > 0) {
+            // If there is at least one set, select the first card of that set as a hint
+            dispatch({
+                type: "clearSelectedCards",
+            })
+            // Not worried about publishing the select event here because it is the only selected card
+            dispatch({
+                type: "addSelectedCard",
+                data: sets[0]
+            })
+            // And deduct a point
+            dispatch({
+                type: "updateScore",
+                data: pointsLostForMissingSet
+            })
+        }
+        else {
+            // If there are no sets in play, just deal three more cards
+            dealThreeCards()
+        }
+    }
+     
     return (
 
         <ControlPanel>
             <Button onClick={startNewGame}>New Game</Button>
             <Score>{score}</Score>
             <Button onClick={addCards}>Add Cards</Button>
+            <HintButton onClick={showHint}>Hint</HintButton>
         </ControlPanel>
     )
 
