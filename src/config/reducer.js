@@ -40,11 +40,6 @@ export default function reducer(state, action) {
                 ...state,
                 score: state.score + action.data
             }
-        case "resetScore":
-            return {
-                ...state,
-                score: 0
-            }
         case "setPlayerMessage":
             return {
                 ...state,
@@ -54,6 +49,13 @@ export default function reducer(state, action) {
             return {
                 ...state,
                 setsFound: state.setsFound + 1
+            }
+        case "resetGame":
+            return {
+                ...state,
+                score: 0,
+                playerMessage: null,
+                setsFound: 0
             }
         default:
             return state

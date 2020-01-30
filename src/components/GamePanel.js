@@ -74,11 +74,7 @@ const GamePanel = () => {
             data: firstHand
         })
         dispatch({
-            type: "resetScore"
-        })
-        dispatch({
-            type: "setPlayerMessage",
-            data: null
+            type: "resetGame"
         })
     }
 
