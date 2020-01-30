@@ -58,7 +58,7 @@ const GamePanel = () => {
     `
 
     const {store,dispatch} = useCardContext()
-    const {score, cardsInPlay, deck} = store
+    const {score, cardsInPlay, deck, setsFound} = store
     
     function startNewGame () {
         // create a new shuffled deck
@@ -87,7 +87,7 @@ const GamePanel = () => {
             // The game is over!
             dispatch({
                 type: "setPlayerMessage",
-                data: "You did it! You've found all the sets!"
+                data: `Game over! You found ${setsFound} sets!`
             })
         }
         let newCards = deal(deck,3)

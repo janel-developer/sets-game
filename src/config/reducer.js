@@ -50,6 +50,11 @@ export default function reducer(state, action) {
                 ...state,
                 playerMessage: action.data
             }
+        case "incrementSetsFound":
+            return {
+                ...state,
+                setsFound: state.setsFound + 1
+            }
         default:
             return state
     }

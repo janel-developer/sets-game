@@ -15,7 +15,8 @@ const Game = () => {
         cardsInPlay: [],
         selectedCards: [],
         score: 0,
-        playerMessage: null
+        playerMessage: null,
+        setsFound: 0
     }
     const [store,dispatch] = useReducer(reducer, initialState)
     const {playerMessage} = store
@@ -35,6 +36,9 @@ const Game = () => {
                 dispatch({
                     type: "removeSetFromPlay",
                     data: selectedCardIds
+                })
+                dispatch({
+                    type: "incrementSetsFound"
                 })
             }
             else {
