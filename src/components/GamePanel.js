@@ -19,13 +19,6 @@ const GamePanel = () => {
         margin: 5px;
         padding: 2px;
         transition: 0.5s all ease-out;
-        &:hover {
-            background: url("img/sacred-geo.svg");
-            background-size: 40%;
-            background-color: ${accentColor};
-            color: black;
-            border: 2px solid darkblue;
-        }
     `
     const HintButton = styled(Button) `
         width: 50vw;
@@ -138,9 +131,9 @@ const GamePanel = () => {
     return (
 
         <ControlPanel>
-            <Button onClick={startNewGame}>New Game</Button>
+            <Button className="button" onClick={startNewGame}>New Game</Button>
             <Score>{score}</Score>
-            <Button onClick={addCards}>Add Cards</Button>
+            <Button className="button" onClick={addCards}>Add Cards</Button>
             <HintButton onClick={showHint}>Hint</HintButton>
         </ControlPanel>
     )
