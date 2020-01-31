@@ -43,10 +43,6 @@ const SetsCard = ({id, color, number, shape, fill}) => {
         width: ${cardWidth}px;
         transition: 0.5s all ease-out;
         background-color: ${cardSelected ? selectedColor : "white"};
-        &:hover {
-            border: 2px solid red;
-            background-color: ${selectedColor}
-        }
     `
 
     // Creates the card shapes and fill
@@ -83,7 +79,7 @@ const SetsCard = ({id, color, number, shape, fill}) => {
     }
 
     return (
-        <Card onClick={() => selectCardAction(id)} >
+        <Card className="card" onClick={() => selectCardAction(id)} >
             { number.map((key) => 
                 (fill === "fill") 
                 ? <CardShape key={key} className="fill" /> 

@@ -1,5 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Amarante&display=swap');
 
+$selectedColor: rgba(0,200,255,.3);
+$accentColor: rgba(0,200,255,.5);
+
 .fill {
     mask: url("sacred-flower.svg");
+}
+
+@media (hover: hover) {
+   .card { 
+        &:hover {
+            border: 2px solid red;
+            background-color: $selectedColor;
+        }
+    }
+    .button {
+        &:hover {
+            background-size: 40%;
+            background-color: $accentColor;
+            color: black;
+            border: 2px solid darkblue;
+        }
+    }
 }
