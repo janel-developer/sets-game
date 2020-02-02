@@ -51,7 +51,7 @@ const GamePanel = () => {
     `
 
     const {store,dispatch} = useCardContext()
-    const {score, cardsInPlay, deck, setsFound} = store
+    const {score, cardsInPlay, deck, setsFound, showInstructions} = store
     
     function startNewGame () {
         // create a new shuffled deck
@@ -88,6 +88,7 @@ const GamePanel = () => {
     }
 
     function addCards () {
+        if (showInstructions) return
         // If there are any sets on the board, decrement points
         if(findSets(cardsInPlay).length > 0) {
             dispatch({
@@ -103,7 +104,7 @@ const GamePanel = () => {
 
     function showHint() {
         // Make sure there are cards in play
-        if(cardsInPlay.length === 0) return
+        if(cardsInPlay.length === 0 || showInstructions) return
         // See if there are any sets in play
         const sets = findSets(cardsInPlay)
         if(sets.length > 0) {
