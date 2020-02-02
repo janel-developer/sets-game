@@ -27,7 +27,7 @@ const SetsCard = ({id, color, number, shape, fill}) => {
 
     const selectedColor = "rgba(0,200,255,.3)"
     const {store,dispatch} = useCardContext()
-    const {selectedCards} = store
+    const {selectedCards,showInstructions} = store
     // If card is selected, set background color to show selected
     const cardSelected = isCardSelected(selectedCards,id)
     // Styles the card with a black border
@@ -60,6 +60,7 @@ const SetsCard = ({id, color, number, shape, fill}) => {
     
     // Sets selected on the card that is selected    `
     function selectCardAction(id) {
+        if(showInstructions) return
         if (selectedCards.includes(id) ) {
             // If card is currently selected, deselect it
             dispatch({
