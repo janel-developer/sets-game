@@ -55,7 +55,8 @@ export default function reducer(state, action) {
                 ...state,
                 score: 0,
                 playerMessage: null,
-                setsFound: 0
+                setsFound: 0,
+                showInstructions: false
             }
         default:
             return state

@@ -25,7 +25,6 @@ const App = () => {
         font-family: 'Amarante', cursive;
         align-self: center;
         font-size: 3em;
-        //height: 10vh;
         width: 25vw;
     `
     const Detail = styled.div `
