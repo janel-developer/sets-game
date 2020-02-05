@@ -57,8 +57,7 @@ export default function reducer(state, action) {
                 playerMessage: null,
                 setsFound: 0,
                 showInstructions: false,
-                selectedCards: [],
-                deck: []
+                selectedCards: []
             }
         default:
             return state
