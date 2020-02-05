@@ -1,3 +1,5 @@
+import { selectedCardsAreSet } from "../services/gameServices"
+
 export default function reducer(state, action) {
     switch(action.type) {
         case "setDeck":
@@ -56,7 +58,9 @@ export default function reducer(state, action) {
                 score: 0,
                 playerMessage: null,
                 setsFound: 0,
-                showInstructions: false
+                showInstructions: false,
+                selectedCards: [],
+                deck: []
             }
         default:
             return state
