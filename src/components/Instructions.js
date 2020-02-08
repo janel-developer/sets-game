@@ -2,18 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import SetsCard from "./SetsCard"
 import {colors, pointsForSet, pointsLostForMissingSet,pointsLostForNoSet} from "../services/gameConstants"
+import {Text, Title} from "./StyledComponents"
 
 const Instructions = () => {
-    const Text = styled.div `
-        color: darkblue;
-        font-family: 'Amarante', cursive;
-        align-self: center;
-        font-size: 1.5em;
-        margin-top: .5em;
-    `
-    const Title = styled(Text) `
-        font-size: 3em;
-    `
     const Page = styled.div `
         display: flex;
         flex-direction: column;
