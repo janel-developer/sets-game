@@ -8,7 +8,7 @@ export const Text = styled.div `
     margin-top: .5em;
 `
 export const Title = styled(Text) `
-    font-size: 3em;
+    font-size: 2em;
 `
 
 export const Message = styled.div `
