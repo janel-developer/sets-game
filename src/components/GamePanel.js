@@ -52,6 +52,43 @@ const GamePanel = () => {
 
     const {store,dispatch} = useCardContext()
     const {score, cardsInPlay, deck, setsFound, showInstructions} = store
+
+    // Get locally stored high scores
+    function getLocalHighScores() {
+        return localStorage.highScores ? JSON.parse(localStorage.highScores)
+                : []
+    }
+
+    // Set high scores in local storage
+    function setLocalHighScores(scores) {
+        localStorage.setItem("highScores",JSON.stringify(scores))
+    }
+
+    // Update the high scores
+    function updateHighScores() {
+        let scores = getLocalHighScores()
+        console.log("scores from local storage", scores)
+        // This is the first high score stored
+        if(scores.length === 0) {
+            scores[0] = score 
+        } 
+        // if not the first, is it higher than the highest?
+        else if (score > scores[0]) {
+            scores.unshift(score)
+        }
+        // Only store the 3 highest scores
+        scores.length > 3 && scores.pop()
+        console.log("scores after updating", scores)
+        // Save in state
+        dispatch({
+            type: "setHighScores",
+            data: scores
+        })    
+
+        // Set in local storage
+        setLocalHighScores(scores)
+        return scores[0]
+    }
     
     function startNewGame () {
         // create a new shuffled deck
@@ -73,10 +110,20 @@ const GamePanel = () => {
 
     function dealThreeCards() {
         if(deck.length === 0) {
+            // check for high score
+            const highestScore = updateHighScores()
+
+            let message = `Game over! You found ${setsFound} sets!`
+            if(score === highestScore) {
+                message = `${message}\n And you beat your highest score!!`
+            }
             // The game is over!
             dispatch({
                 type: "setPlayerMessage",
-                data: `Game over! You found ${setsFound} sets!`
+                data: message
+            })
+            dispatch({
+                type: "setEndOfGame"
             })
         }
         let newCards = deal(deck,3)

@@ -45,10 +45,20 @@ export default function reducer(state, action) {
                 ...state,
                 playerMessage: action.data
             }
+        case "setHighScores":
+            return {
+                ...state,
+                highScores: action.data
+            }
         case "incrementSetsFound":
             return {
                 ...state,
                 setsFound: state.setsFound + 1
+            }
+        case "setEndOfGame":
+            return {
+                ...state,
+                endOfGame: true
             }
         case "resetGame":
             return {
@@ -57,6 +67,7 @@ export default function reducer(state, action) {
                 playerMessage: null,
                 setsFound: 0,
                 showInstructions: false,
+                endOfGame: false,
                 selectedCards: []
             }
         default:
