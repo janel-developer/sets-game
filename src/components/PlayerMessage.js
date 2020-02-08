@@ -1,9 +1,9 @@
 import React from "react"
-import {Message} from "./StyledComponents"
+import {MessageText} from "./StyledComponents"
 
 const PlayerMessage = ({message}) => {
     return (
-        <Message>{message}</Message>
+        <MessageText>{message}</MessageText>
     )
 }
 
