@@ -188,3 +188,9 @@ export function findSets(cardsInPlay) {
     }
     return allSets.sort()
 }
+
+export function updateHighestScores(highScores, score) {
+    highScores.push(score);
+    highScores.sort().reverse()
+    return highScores.length > 3 ? highScores.slice(0,3) : highScores
+}

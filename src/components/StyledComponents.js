@@ -37,11 +37,7 @@ export const Text = styled.div `
     font-size: 1.5em;
 `
 export const Title = styled(Text) `
-<<<<<<< HEAD
-    font-size: 3em;
-=======
     font-size: 2em;
->>>>>>> 61f8be3e919e08e49f23c5f2370fffc390016a10
 `
 
 export const InstructionText = styled(Text) `

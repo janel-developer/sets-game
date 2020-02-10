@@ -7,7 +7,8 @@ import {
     missingColor,
     missingShape,
     missingFill,
-    findSets} from "./gameServices"
+    findSets,
+    updateHighestScores} from "./gameServices"
 import {colors, numbers, shapes, fills} from "./gameConstants"
 import fixtures from "./gamesServicesSpecFixtures"
 
@@ -73,7 +74,7 @@ describe("selectedCardsAreSet", () => {
     })
     it("returns false when exactly 2 of 3 three colors are the same", () => {
         let selectedCards = [`1|${colors[0]}|circle|fill`,`1|${colors[1]}|circle|solid`,`1|${colors[1]}|circle|empty`]
-        expect(selectedCardsAreSet(selectedCards)).toEqual(false)
+        expect(selectedCardsAreSet(selectedCards)).toEqual(false) 
         selectedCards = [`1|${colors[1]}|circle|fill`,`2|${colors[0]}|circle|solid`,`3|${colors[1]}|circle|empty`]
         expect(selectedCardsAreSet(selectedCards)).toEqual(false)
         selectedCards = [`1|${colors[1]}|circle|fill`,`2|${colors[0]}|circle|solid`,`3|${colors[0]}|circle|empty`]
@@ -270,5 +271,28 @@ describe("findSets", () => {
 
             })
         })
+    })
+})
+
+describe("returns top three scores when a new score is added", () => {
+    it("returns 250, 249, 221 when 249 is added to 250, 221, 219",() => {
+        const highscores = [250,221, 219]
+        const score = 249
+        expect(updateHighestScores(highscores, score)).toEqual([250,249,221])
+    })
+    it("returns 250, 249, 221 when 219 is added to 250, 249, 221",() => {
+        const highscores = [250,249,221]
+        const score = 219
+        expect(updateHighestScores(highscores, score)).toEqual([250,249,221])
+    })
+    it("returns 250, 249 when 249 is added to 250",() => {
+        const highscores = [250]
+        const score = 249
+        expect(updateHighestScores(highscores, score)).toEqual([250,249])
+    })
+    it("returns 250 250 is added to []",() => {
+        const highscores = []
+        const score = 250
+        expect(updateHighestScores(highscores, score)).toEqual([250])
     })
 })
