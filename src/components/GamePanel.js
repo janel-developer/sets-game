@@ -1,6 +1,6 @@
 import React from "react"
 import {useCardContext} from "../config/store"
-import {deal, shuffle, newCardDeck, findSets} from "../services/gameServices"
+import {deal, shuffle, newCardDeck, findSets, updateHighestScores} from "../services/gameServices"
 import {pointsLostForMissingSet} from "../services/gameConstants"
 import {Button,HintButton,Score,ControlPanel} from "./StyledComponents"
 
@@ -22,27 +22,20 @@ const GamePanel = () => {
 
     // Update the high scores
     function updateHighScores() {
-        let scores = getLocalHighScores()
-        // This is the first high score stored
-        if(scores.length === 0) {
-            scores[0] = score 
-        } 
-        // if not the first, is it higher than the highest?
-        else if (score > scores[0]) {
-            scores.unshift(score)
-        }
-        // Only store the 3 highest scores
-        scores.length > 3 && scores.pop()
-        console.log("scores after updating", scores)
+        let currentHighestScores = getLocalHighScores()
+        const highestScores = updateHighestScores(currentHighestScores, score)
+
         // Save in state
         dispatch({
             type: "setHighScores",
-            data: scores
+            data: highestScores
         })    
 
         // Set in local storage
-        setLocalHighScores(scores)
-        return scores[0]
+        setLocalHighScores(highestScores)
+
+        // return the highest score
+        return highestScores[0]
     }
     
     function startNewGame () {
