@@ -61,23 +61,36 @@ const GamePanel = () => {
         })    
     }
 
+    function endOfGame() {
+        // check for bonus points for perfect game
+        if(score === setsFound * 10) {
+            dispatch({
+               type: "updateScore",
+               data: 20 
+            })
+        }
+
+        // check for high score
+        const highestScore = updateHighScores()
+
+        let message = `Game over! You found ${setsFound} sets!`
+        if(score === highestScore) {
+            message = `${message}\n And you beat your highest score!!`
+        }
+        // The game is over!
+        dispatch({
+            type: "setPlayerMessage",
+            data: message
+        })
+        dispatch({
+            type: "setEndOfGame"
+        })
+
+    }
+
     function dealThreeCards() {
         if(deck.length === 0) {
-            // check for high score
-            const highestScore = updateHighScores()
-
-            let message = `Game over! You found ${setsFound} sets!`
-            if(score === highestScore) {
-                message = `${message}\n And you beat your highest score!!`
-            }
-            // The game is over!
-            dispatch({
-                type: "setPlayerMessage",
-                data: message
-            })
-            dispatch({
-                type: "setEndOfGame"
-            })
+            endOfGame()
         }
         let newCards = deal(deck,3)
         dispatch({
