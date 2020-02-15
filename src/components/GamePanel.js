@@ -21,9 +21,9 @@ const GamePanel = () => {
     }
 
     // Update the high scores
-    function updateHighScores() {
+    function updateHighScores(endScore) {
         let currentHighestScores = getLocalHighScores()
-        const highestScores = updateHighestScores(currentHighestScores, score)
+        const highestScores = updateHighestScores(currentHighestScores, endScore)
 
         // Save in state
         dispatch({
@@ -62,19 +62,29 @@ const GamePanel = () => {
     }
 
     function endOfGame() {
+        // Because of asynchronous state change, locally storing the end score
+        // for calculating high score
+        let endScore = score
+        let perfectGame = false
         // check for bonus points for perfect game
         if(score === setsFound * 10) {
+            perfectGame = true
+            endScore += 30
             dispatch({
                type: "updateScore",
-               data: 20 
+               data: 30 
             })
         }
 
         // check for high score
-        const highestScore = updateHighScores()
+        const highestScore = updateHighScores(endScore)
 
-        let message = `Game over! You found ${setsFound} sets!`
-        if(score === highestScore) {
+        let message = `You found ${setsFound} sets!`
+        perfectGame  
+            ? message = `You played a perfect game!! ${message}`
+            : message = `Game over! ${message}`
+
+        if(endScore === highestScore) {
             message = `${message}\n And you beat your highest score!!`
         }
         // The game is over!
