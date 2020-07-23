@@ -90,11 +90,11 @@ describe("selectedCardsAreSet", () => {
 
     })
     it("returns false when exactly 2 of the 3 fills are the same",() => {
-        let selectedCards = [`1|${colors[2]}|circle|fill`,`1|${colors[2]}|oval|fill`,`1|${colors[2]}|square|empty`]
+        let selectedCards = [`1|${colors[2]}|circle|fill`,`1|${colors[2]}|diamond|fill`,`1|${colors[2]}|square|empty`]
         expect(selectedCardsAreSet(selectedCards)).toEqual(false)
-        selectedCards = [`1|${colors[2]}|circle|fill`,`1|${colors[2]}|oval|empty`,`1|${colors[2]}|square|fill`]
+        selectedCards = [`1|${colors[2]}|circle|fill`,`1|${colors[2]}|diamond|empty`,`1|${colors[2]}|square|fill`]
         expect(selectedCardsAreSet(selectedCards)).toEqual(false)
-        selectedCards = [`1|${colors[2]}|circle|fill`,`1|${colors[2]}|oval|empty`,`1|${colors[2]}|square|empty`]
+        selectedCards = [`1|${colors[2]}|circle|fill`,`1|${colors[2]}|diamond|empty`,`1|${colors[2]}|square|empty`]
         expect(selectedCardsAreSet(selectedCards)).toEqual(false)
 
     })
@@ -103,7 +103,7 @@ describe("selectedCardsAreSet", () => {
         expect(selectedCardsAreSet(selectedCards)).toEqual(true)
     })
     it("returns true when we have 3 like numbers, 3 like colors, 3 like fills, 3 different shapes", () => {
-        const selectedCards = [`1|${colors[2]}|circle|solid`,`1|${colors[2]}|oval|solid`,`1|${colors[2]}|square|solid`]
+        const selectedCards = [`1|${colors[2]}|circle|solid`,`1|${colors[2]}|diamond|solid`,`1|${colors[2]}|square|solid`]
         expect(selectedCardsAreSet(selectedCards)).toEqual(true)
     })
     it("returns true when we have 3 like numbers, 3 like shapes, 3 like fills, 3 different colors", () => {
@@ -115,7 +115,7 @@ describe("selectedCardsAreSet", () => {
         expect(selectedCardsAreSet(selectedCards)).toEqual(true)
     })
     it("returns true when we have 3 different numbers, 3 different colors, 3 different shapes, 3 like fills", () => {
-        const selectedCards = [`1|${colors[2]}|circle|solid`,`2|${colors[0]}|square|solid`,`3|${colors[1]}|oval|solid`]
+        const selectedCards = [`1|${colors[2]}|circle|solid`,`2|${colors[0]}|square|solid`,`3|${colors[1]}|diamond|solid`]
         expect(selectedCardsAreSet(selectedCards)).toEqual(true)
     })
     it("returns true when we have 3 different numbers, 3 different colors, 3 different fills, 3 like shapes", () => {
@@ -123,15 +123,15 @@ describe("selectedCardsAreSet", () => {
         expect(selectedCardsAreSet(selectedCards)).toEqual(true)
     })
     it("returns true when we have 3 different numbers, 3 different shapes, 3 different fills, 3 like colors", () => {
-        const selectedCards = [`1|${colors[2]}|circle|solid`,`2|${colors[2]}|square|empty`,`3|${colors[2]}|oval|fill`]
+        const selectedCards = [`1|${colors[2]}|circle|solid`,`2|${colors[2]}|square|empty`,`3|${colors[2]}|diamond|fill`]
         expect(selectedCardsAreSet(selectedCards)).toEqual(true)
     })
     it("returns true when we have 3 different colors, 3 different shapes, 3 different fills, 3 like numbers", () => {
-        const selectedCards = [`1|${colors[2]}|circle|solid`,`1|${colors[0]}|square|empty`,`1|${colors[1]}|oval|fill`]
+        const selectedCards = [`1|${colors[2]}|circle|solid`,`1|${colors[0]}|square|empty`,`1|${colors[1]}|diamond|fill`]
         expect(selectedCardsAreSet(selectedCards)).toEqual(true)
     })
     it("returns true when we have 3 like colors, 3 different shapes, 3 like fills, 3 different numbers", () => {
-        const selectedCards = [`1|${colors[2]}|circle|solid`,`2|${colors[2]}|square|solid`,`3|${colors[2]}|oval|solid`]
+        const selectedCards = [`1|${colors[2]}|circle|solid`,`2|${colors[2]}|square|solid`,`3|${colors[2]}|diamond|solid`]
         expect(selectedCardsAreSet(selectedCards)).toEqual(true)
     })
     it("returns true when we have 3 different colors, 3 like shapes, 3 different fills, 3 like numbers", () => {
@@ -202,17 +202,17 @@ describe("missingShape", () => {
     it("should return square if both pairs have square", () => {
         expect(missingShape([fixtures.oneSquare,fixtures.twoSquare])).toEqual("square")
     })
-    it("should return oval if both pairs have oval", () => {
-        expect(missingShape([fixtures.oneOval,fixtures.twoOval])).toEqual("oval")
+    it("should return diamond if both pairs have diamond", () => {
+        expect(missingShape([fixtures.onediamond,fixtures.twodiamond])).toEqual("diamond")
     })
-    it("should return circle if one has square and one has oval", () => {
-        expect(missingShape([fixtures.oneSquare,fixtures.oneOval])).toEqual("circle")
+    it("should return circle if one has square and one has diamond", () => {
+        expect(missingShape([fixtures.oneSquare,fixtures.onediamond])).toEqual("circle")
     })
-    it("should return square if one has circle and one has oval", () => {
-        expect(missingShape([fixtures.oneCircle,fixtures.oneOval])).toEqual("square")
+    it("should return square if one has circle and one has diamond", () => {
+        expect(missingShape([fixtures.oneCircle,fixtures.onediamond])).toEqual("square")
     })
-    it("should return oval if one has circle and one has square", () => {
-        expect(missingShape([fixtures.oneCircle,fixtures.oneSquare])).toEqual("oval")
+    it("should return diamond if one has circle and one has square", () => {
+        expect(missingShape([fixtures.oneCircle,fixtures.oneSquare])).toEqual("diamond")
     })
 })
 describe("missingFill", () => {
@@ -247,8 +247,8 @@ describe("findSets", () => {
             expect(findSets(cards)).toEqual([])
         })
         it("returns an empty array when there are no sets because of color ", () => {
-            const cards = [fixtures.threeColor1OvalSolid, fixtures.twoColor1CircleFill,fixtures.oneColor2SquareEmpty,
-                            fixtures.twoColor1CircleSolid,fixtures.threeColor2OvalFill, fixtures.oneColor3SquareSolid]
+            const cards = [fixtures.threeColor1diamondSolid, fixtures.twoColor1CircleFill,fixtures.oneColor2SquareEmpty,
+                            fixtures.twoColor1CircleSolid,fixtures.threeColor2diamondFill, fixtures.oneColor3SquareSolid]
             expect(findSets(cards)).toEqual([])
         })
         it("returns an empty array when there are no sets because of shape ", () => {

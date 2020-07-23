@@ -6,7 +6,7 @@ export const color1 = "red"
 export const color2 = "blue"
 export const color3 = "black"
 export const colors = [color1, color2, color3]
-export const shapes = ["square", "circle", "oval"]
+export const shapes = ["square", "circle", "diamond"]
 export const fills = ["solid", "empty", "fill"]
 
 // points added when a set is found

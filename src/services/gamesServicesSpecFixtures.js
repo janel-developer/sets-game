@@ -100,20 +100,20 @@ fixtures.twoSquare =
     shape: "square",
     fill: "solid"
 }
-fixtures.oneOval =
+fixtures.onetriangle =
 {
-    id: `1|${colors[1]}|oval|solid`,
+    id: `1|${colors[1]}|triangle|solid`,
     number: [1],
     color: colors[1],
-    shape: "oval",
+    shape: "triangle",
     fill: "solid"
 }
-fixtures.twoOval =
+fixtures.twotriangle =
 {
-    id: `2|${colors[1]}|oval|solid`,
+    id: `2|${colors[1]}|triangle|solid`,
     number: [1,2],
     color: colors[1],
-    shape: "oval",
+    shape: "triangle",
     fill: "solid"
 }
 fixtures.oneSolid =
@@ -150,18 +150,18 @@ fixtures.twoEmpty =
 }
 fixtures.oneFill =
 {
-    id: `1|${colors[1]}|oval|fill`,
+    id: `1|${colors[1]}|triangle|fill`,
     number: [1],
     color: colors[1],
-    shape: "oval",
+    shape: "triangle",
     fill: "fill"
 }
 fixtures.twoFill =
 {
-    id: `2|${colors[1]}|oval|fill`,
+    id: `2|${colors[1]}|triangle|fill`,
     number: [1,2],
     color: colors[1],
-    shape: "oval",
+    shape: "triangle",
     fill: "fill"
 }
 // circles
@@ -274,60 +274,60 @@ fixtures.threeColor3SquareEmpty =
 fixtures.deck.find(card => card.id === `3|${colors[2]}|square|empty`)
 fixtures.threeColor3SquareFill = 
 fixtures.deck.find(card => card.id === `3|${colors[2]}|square|fill`)
-// ovals
-fixtures.oneColor1OvalSolid = 
-fixtures.deck.find(card => card.id === `1|${colors[0]}|oval|solid`)
-fixtures.oneColor1OvalEmpty = 
-fixtures.deck.find(card => card.id === `1|${colors[0]}|oval|empty`)
-fixtures.oneColor1OvalFill = 
-fixtures.deck.find(card => card.id === `1|${colors[0]}|oval|fill`)
-fixtures.oneColor2OvalSolid = 
-fixtures.deck.find(card => card.id === `1|${colors[1]}|oval|solid`)
-fixtures.oneColor2OvalEmpty = 
-fixtures.deck.find(card => card.id === `1|${colors[1]}|oval|empty`)
-fixtures.oneColor2OvalFill = 
-fixtures.deck.find(card => card.id === `1|${colors[1]}|oval|fill`)
-fixtures.oneColor3OvalSolid = 
-fixtures.deck.find(card => card.id === `1|${colors[2]}|oval|solid`)
-fixtures.oneColor3OvalEmpty = 
-fixtures.deck.find(card => card.id === `1|${colors[2]}|oval|empty`)
-fixtures.oneColor3OvalFill = 
-fixtures.deck.find(card => card.id === `1|${colors[2]}|oval|fill`)
-fixtures.twoColor1OvalSolid = 
-fixtures.deck.find(card => card.id === `2|${colors[0]}|oval|solid`)
-fixtures.twoColor1OvalEmpty = 
-fixtures.deck.find(card => card.id === `2|${colors[0]}|oval|empty`)
-fixtures.twoColor1OvalFill = 
-fixtures.deck.find(card => card.id === `2|${colors[0]}|oval|fill`)
-fixtures.twoColor2OvalSolid = 
-fixtures.deck.find(card => card.id === `2|${colors[1]}|oval|solid`)
-fixtures.twoColor2OvalEmpty = 
-fixtures.deck.find(card => card.id === `2|${colors[1]}|oval|empty`)
-fixtures.twoColor2OvalFill = 
-fixtures.deck.find(card => card.id === `2|${colors[1]}|oval|fill`)
-fixtures.twoColor3OvalSolid = 
-fixtures.deck.find(card => card.id === `2|${colors[2]}|oval|solid`)
-fixtures.twoColor3OvalEmpty = 
-fixtures.deck.find(card => card.id === `2|${colors[2]}|oval|empty`)
-fixtures.twoColor3OvalFill = 
-fixtures.deck.find(card => card.id === `2|${colors[2]}|oval|fill`)
-fixtures.threeColor1OvalSolid = 
-fixtures.deck.find(card => card.id === `3|${colors[0]}|oval|solid`)
-fixtures.threeColor1OvalEmpty = 
-fixtures.deck.find(card => card.id === `3|${colors[0]}|oval|empty`)
-fixtures.threeColor1OvalFill = 
-fixtures.deck.find(card => card.id === `3|${colors[0]}|oval|fill`)
-fixtures.threeColor2OvalSolid = 
-fixtures.deck.find(card => card.id === `3|${colors[1]}|oval|solid`)
-fixtures.threeColor2OvalEmpty = 
-fixtures.deck.find(card => card.id === `3|${colors[1]}|oval|empty`)
-fixtures.threeColor2OvalFill = 
-fixtures.deck.find(card => card.id === `3|${colors[1]}|oval|fill`)
-fixtures.threeColor3OvalSolid = 
-fixtures.deck.find(card => card.id === `3|${colors[2]}|oval|solid`)
-fixtures.threeColor3OvalEmpty = 
-fixtures.deck.find(card => card.id === `3|${colors[2]}|oval|empty`)
-fixtures.threeColor3OvalFill = 
-fixtures.deck.find(card => card.id === `3|${colors[2]}|oval|fill`)
+// triangles
+fixtures.oneColor1triangleSolid = 
+fixtures.deck.find(card => card.id === `1|${colors[0]}|triangle|solid`)
+fixtures.oneColor1triangleEmpty = 
+fixtures.deck.find(card => card.id === `1|${colors[0]}|triangle|empty`)
+fixtures.oneColor1triangleFill = 
+fixtures.deck.find(card => card.id === `1|${colors[0]}|triangle|fill`)
+fixtures.oneColor2triangleSolid = 
+fixtures.deck.find(card => card.id === `1|${colors[1]}|triangle|solid`)
+fixtures.oneColor2triangleEmpty = 
+fixtures.deck.find(card => card.id === `1|${colors[1]}|triangle|empty`)
+fixtures.oneColor2triangleFill = 
+fixtures.deck.find(card => card.id === `1|${colors[1]}|triangle|fill`)
+fixtures.oneColor3triangleSolid = 
+fixtures.deck.find(card => card.id === `1|${colors[2]}|triangle|solid`)
+fixtures.oneColor3triangleEmpty = 
+fixtures.deck.find(card => card.id === `1|${colors[2]}|triangle|empty`)
+fixtures.oneColor3triangleFill = 
+fixtures.deck.find(card => card.id === `1|${colors[2]}|triangle|fill`)
+fixtures.twoColor1triangleSolid = 
+fixtures.deck.find(card => card.id === `2|${colors[0]}|triangle|solid`)
+fixtures.twoColor1triangleEmpty = 
+fixtures.deck.find(card => card.id === `2|${colors[0]}|triangle|empty`)
+fixtures.twoColor1triangleFill = 
+fixtures.deck.find(card => card.id === `2|${colors[0]}|triangle|fill`)
+fixtures.twoColor2triangleSolid = 
+fixtures.deck.find(card => card.id === `2|${colors[1]}|triangle|solid`)
+fixtures.twoColor2triangleEmpty = 
+fixtures.deck.find(card => card.id === `2|${colors[1]}|triangle|empty`)
+fixtures.twoColor2triangleFill = 
+fixtures.deck.find(card => card.id === `2|${colors[1]}|triangle|fill`)
+fixtures.twoColor3triangleSolid = 
+fixtures.deck.find(card => card.id === `2|${colors[2]}|triangle|solid`)
+fixtures.twoColor3triangleEmpty = 
+fixtures.deck.find(card => card.id === `2|${colors[2]}|triangle|empty`)
+fixtures.twoColor3triangleFill = 
+fixtures.deck.find(card => card.id === `2|${colors[2]}|triangle|fill`)
+fixtures.threeColor1triangleSolid = 
+fixtures.deck.find(card => card.id === `3|${colors[0]}|triangle|solid`)
+fixtures.threeColor1triangleEmpty = 
+fixtures.deck.find(card => card.id === `3|${colors[0]}|triangle|empty`)
+fixtures.threeColor1triangleFill = 
+fixtures.deck.find(card => card.id === `3|${colors[0]}|triangle|fill`)
+fixtures.threeColor2triangleSolid = 
+fixtures.deck.find(card => card.id === `3|${colors[1]}|triangle|solid`)
+fixtures.threeColor2triangleEmpty = 
+fixtures.deck.find(card => card.id === `3|${colors[1]}|triangle|empty`)
+fixtures.threeColor2triangleFill = 
+fixtures.deck.find(card => card.id === `3|${colors[1]}|triangle|fill`)
+fixtures.threeColor3triangleSolid = 
+fixtures.deck.find(card => card.id === `3|${colors[2]}|triangle|solid`)
+fixtures.threeColor3triangleEmpty = 
+fixtures.deck.find(card => card.id === `3|${colors[2]}|triangle|empty`)
+fixtures.threeColor3triangleFill = 
+fixtures.deck.find(card => card.id === `3|${colors[2]}|triangle|fill`)
 
 export default fixtures
