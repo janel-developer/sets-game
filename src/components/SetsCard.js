@@ -7,6 +7,8 @@ import {isCardSelected} from "../services/gameServices"
 const SetsCard = ({id, color, number, shape, fill}) => {
     // Get inner width of the window
     const innerWidth = window.innerWidth
+
+    const shapeMargin = innerWidth > 500 ? 0.8 : 0.5
     // Cards are 150px wide for md/large screen, and 75px wide for sm/xs screen
     const cardWidth = innerWidth > 500 ? 200 : 100
     // Cards are 300px high for md/large screen, and 150px high for sm/xs screen
@@ -16,12 +18,19 @@ const SetsCard = ({id, color, number, shape, fill}) => {
     // If there are 3 shapes, divide width by 3 (below)
     let shapeWidth = innerWidth > 500 ? 100 : 50
     // If a rectangle or diamond, width is half of height
-    if (shape == "square") 
+    if (shape === "square") 
         shapeWidth = shapeWidth / 2
     // Card shapes are 100px tall for md/large screen and 50px tall for sm/xs screen
     // If there are 2 shapes, divide height by 2 (below)
     // If there are 3 shapes, divide height by 3 (below)
-    let shapeHeight = innerWidth > 500 ? 100 : 50 
+    let shapeHeight = innerWidth > 500 ? 100 : 50
+    
+    //scale diamonds down by 20%
+    if(shape === "diamond"){
+        shapeHeight = shapeHeight * 0.8;
+        shapeWidth = shapeWidth * 0.8;
+    }
+
     // Set border radius for circle
     const borderRadius = (shape === "circle") ? "50%" : "50px / 100px";
     //spin diamond so it's actually a diamond
@@ -58,7 +67,7 @@ const SetsCard = ({id, color, number, shape, fill}) => {
         border-radius: ${(shape === "square" || shape === "diamond") ? "0" : borderRadius};
         mask-size: 200%;
         mask-position: center;
-        margin: .5em;
+        margin: ${shapeMargin}em;
         transform: ${turn};
     
     // Sets selected on the card that is selected    `

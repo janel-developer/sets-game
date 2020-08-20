@@ -203,13 +203,13 @@ describe("missingShape", () => {
         expect(missingShape([fixtures.oneSquare,fixtures.twoSquare])).toEqual("square")
     })
     it("should return diamond if both pairs have diamond", () => {
-        expect(missingShape([fixtures.onediamond,fixtures.twodiamond])).toEqual("diamond")
+        expect(missingShape([fixtures.oneDiamond,fixtures.twoDiamond])).toEqual("diamond")
     })
     it("should return circle if one has square and one has diamond", () => {
-        expect(missingShape([fixtures.oneSquare,fixtures.onediamond])).toEqual("circle")
+        expect(missingShape([fixtures.oneSquare,fixtures.oneDiamond])).toEqual("circle")
     })
     it("should return square if one has circle and one has diamond", () => {
-        expect(missingShape([fixtures.oneCircle,fixtures.onediamond])).toEqual("square")
+        expect(missingShape([fixtures.oneCircle,fixtures.oneDiamond])).toEqual("square")
     })
     it("should return diamond if one has circle and one has square", () => {
         expect(missingShape([fixtures.oneCircle,fixtures.oneSquare])).toEqual("diamond")
@@ -247,8 +247,8 @@ describe("findSets", () => {
             expect(findSets(cards)).toEqual([])
         })
         it("returns an empty array when there are no sets because of color ", () => {
-            const cards = [fixtures.threeColor1diamondSolid, fixtures.twoColor1CircleFill,fixtures.oneColor2SquareEmpty,
-                            fixtures.twoColor1CircleSolid,fixtures.threeColor2diamondFill, fixtures.oneColor3SquareSolid]
+            const cards = [fixtures.threeColor1DiamondSolid, fixtures.twoColor1CircleFill,fixtures.oneColor2SquareEmpty,
+                            fixtures.twoColor1CircleSolid,fixtures.threeColor2DiamondFill, fixtures.oneColor3SquareSolid]
             expect(findSets(cards)).toEqual([])
         })
         it("returns an empty array when there are no sets because of shape ", () => {
