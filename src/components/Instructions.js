@@ -55,18 +55,18 @@ const Instructions = () => {
         shape: "square",
         fill: "solid"
     }
-    const oneColor3OvalSolid = {
-        id: `1|${colors[2]}|oval|solid`,
+    const oneColor3DiamondSolid = {
+        id: `1|${colors[2]}|diamond|solid`,
         number: [1],
         color: colors[2],
-        shape: "oval",
+        shape: "diamond",
         fill: "solid"
     }
-    const threeColor3OvalSolid = {
-        id: `3|${colors[2]}|oval|solid`,
+    const threeColor3DiamondSolid = {
+        id: `3|${colors[2]}|diamond|solid`,
         number: [1,2,3],
         color: colors[2],
-        shape: "oval",
+        shape: "diamond",
         fill: "solid"
     }
     return (
@@ -97,13 +97,13 @@ const Instructions = () => {
             <Row>
                 <SetsCard {...oneColor1CircleSolid} />
                 <SetsCard {...oneColor2SquareSolid} />
-                <SetsCard {...oneColor3OvalSolid} />
+                <SetsCard {...oneColor3DiamondSolid} />
             </Row>
             <InstructionText>3. All fill types are the same, or all fill types are different.</InstructionText>
             <Row>
                 <SetsCard {...oneColor1CircleSolid} />
                 <SetsCard {...oneColor2SquareSolid} />
-                <SetsCard {...oneColor3OvalSolid} />
+                <SetsCard {...oneColor3DiamondSolid} />
             </Row>
             <Row>
                 <SetsCard {...oneColor1CircleSolid} />
@@ -119,7 +119,7 @@ const Instructions = () => {
             <Row>
                 <SetsCard {...oneColor1CircleSolid} />
                 <SetsCard {...twoColor2SquareSolid} />
-                <SetsCard {...threeColor3OvalSolid} />
+                <SetsCard {...threeColor3DiamondSolid} />
             </Row>
             <Title>Add Cards</Title>
             <InstructionText>When you think there are no more sets on the board, use the Add Cards button to add three more cards to the board. If there are still more sets on the board, {-1*pointsLostForMissingSet} points will be taken from your score and no new cards will be added.</InstructionText>
