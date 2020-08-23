@@ -14,7 +14,7 @@ Deployed at https://ca-sets-game.netlify.com/
 
 ## Contribute
 
-If you want to contribute, look for open issues and start there. 
+If you want to contribute, look for open issues and start there. You will have to get contributer access - so get in touch with me if you would like to contribute. Alternately, you can fork the repo and raise PRs from your fork.
 
 1. clone the repo
 2. create a feature branch
